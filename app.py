@@ -143,6 +143,7 @@ def main():
         for question in example_questions:
             if st.button(question, key=f"example_{question}"):
                 st.session_state.example_question = question
+                st.rerun()
     
     # Initialize chat history in session state
     if "messages" not in st.session_state:
@@ -163,13 +164,13 @@ def main():
                         [{source['url']}]({source['url']})
                         """)
     
+    # Chat input - always display
+    user_input = st.chat_input("Ask a question about PostgreSQL...")
+    
     # Handle example question click
     if "example_question" in st.session_state:
         user_input = st.session_state.example_question
         del st.session_state.example_question
-    else:
-        # Chat input
-        user_input = st.chat_input("Ask a question about PostgreSQL...")
     
     # Process user input
     if user_input:

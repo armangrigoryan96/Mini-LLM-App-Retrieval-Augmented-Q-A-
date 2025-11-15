@@ -81,42 +81,65 @@ This project implements a complete RAG pipeline that:
 
 ### Prerequisites
 
-- Python 3.8+
-- Docker and Docker Compose (for Milvus)
+- Docker and Docker Compose
 - OpenAI API key
 - Internet connection (for initial document scraping)
 
 ### Installation
+
+#### Option 1: Docker Deployment (Recommended)
 
 1. **Clone the repository**
 ```bash
 cd /home/armg0/Desktop/Old/RAG_mini_proj
 ```
 
-2. **Start Milvus with Docker Compose**
+2. **Set up environment variables**
 ```bash
-docker-compose up -d
+cp .env.example .env
+# Edit .env and add your OpenAI API key
+```
+
+3. **Start all services with Docker Compose**
+```bash
+docker compose up -d --build
 ```
 
 This will start:
 - Milvus vector database (port 19530)
 - etcd (for metadata storage)
 - MinIO (for object storage)
+- Streamlit app (port 8501)
 
 Wait ~30 seconds for services to be ready.
 
-3. **Create virtual environment**
+4. **Access the application**
+```bash
+# Open in browser
+http://localhost:8501
+```
+
+The app will automatically build the vector database on first launch.
+
+#### Option 2: Local Development
+
+1. **Start only Milvus services**
+```bash
+docker compose up -d etcd minio standalone
+```
+
+2. **Create virtual environment**
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-4. **Install dependencies**
+3. **Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-5. **Set up environment variables**
+4. **Set up environment variables**
 ```bash
 cp .env.example .env
 # Edit .env and add your OpenAI API key
@@ -144,7 +167,19 @@ MAX_CHUNKS_PER_DOC=5    # Limit chunks per doc (use 0 or remove for all)
 
 ### Run the Application
 
-**Launch Streamlit UI**
+#### Docker Deployment
+```bash
+# View logs
+docker compose logs -f app
+
+# Stop services
+docker compose down
+
+# Restart app only
+docker compose restart app
+```
+
+#### Local Development
 ```bash
 streamlit run app.py
 ```
@@ -191,7 +226,9 @@ This will:
 ```
 RAG_mini_proj/
 ├── app.py                      # Streamlit UI (entry point)
-├── docker-compose.yml          # Milvus services configuration
+├── Dockerfile                  # Docker image for app
+├── docker-compose.yml          # All services configuration
+├── .dockerignore               # Docker build exclusions
 ├── requirements.txt            # Python dependencies
 ├── .env.example                # Environment template
 ├── .gitignore                  # Git ignore rules

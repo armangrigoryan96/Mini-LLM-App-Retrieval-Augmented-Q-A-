@@ -1,0 +1,33 @@
+# Exclude volumes
+volumes/
+
+# Exclude virtual environment
+venv/
+env/
+.venv/
+
+# Exclude Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Exclude git
+.git/
+.gitignore
+
+# Exclude IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Exclude OS files
+.DS_Store
+Thumbs.db
+
+# Exclude test coverage
+.coverage
+htmlcov/
