@@ -18,7 +18,7 @@ This project implements a complete RAG pipeline that:
 - Fetches and processes PostgreSQL 16 documentation
 - Generates embeddings and stores them in Milvus vector database
 - Retrieves relevant context for user queries using cosine similarity
-- Generates accurate answers using GPT-3.5-turbo
+- Generates accurate answers using GPT-4o
 - Provides an interactive Streamlit UI
 - Includes evaluation metrics and a test dataset
 
