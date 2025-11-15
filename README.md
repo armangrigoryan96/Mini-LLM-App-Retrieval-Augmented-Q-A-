@@ -46,7 +46,7 @@ This project implements a complete RAG pipeline that:
 │         ▼                                   │
 │  ┌──────────────────┐                      │
 │  │  LLM Generation  │◀────── OpenAI API    │
-│  │  (GPT-3.5)       │        Chat History  │
+│  │  (GPT-4o)       │        Chat History  │
 │  └──────────────────┘                      │
 └─────────────────────────────────────────────┘
        │
@@ -276,7 +276,7 @@ RAG_mini_proj/
 - **Why**: Advanced reasoning, strong instruction following, multimodal
 - **Cost**: $2.50 per 1M input tokens, $10 per 1M output tokens
 - **Performance**: Best-in-class accuracy
-- **Alternative**: `gpt-4o-mini` for lower cost, `gpt-3.5-turbo` for budget option
+- **Alternative**: `gpt-4o-mini` for lower cost, `gpt-4o` for budget option
 
 ### Chunking Strategy
 
@@ -489,7 +489,7 @@ MIT License - feel free to use for learning and projects.
 ## 🙏 Acknowledgments
 
 - PostgreSQL Documentation: https://www.postgresql.org/docs/16/
-- OpenAI API: GPT-3.5-turbo
+- OpenAI API: GPT-4o
 - Sentence Transformers: HuggingFace
 - Milvus: Vector database - https://milvus.io/
 - Streamlit: UI framework

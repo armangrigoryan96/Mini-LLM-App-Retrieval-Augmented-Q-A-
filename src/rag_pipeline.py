@@ -41,7 +41,7 @@ class RAGPipeline:
     def __init__(
         self,
         vector_store: VectorStore,
-        model_name: str = "gpt-3.5-turbo",
+        model_name: str = "gpt-4o",
         temperature: float = 0.1,
         top_k: int = 5
     ):
